@@ -1,0 +1,477 @@
+warning: field `config` is never read
+  --> crates/attack-simulator/src/lib.rs:11:5
+   |
+10 | pub struct AttackSimulator {
+   |            --------------- field in this struct
+11 |     config: SimulatorConfig,
+   |     ^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `attack-simulator` (lib) generated 1 warning
+warning: unused imports: `Text` and `symbols`
+  --> crates/orchestrator/src/dashboard.rs:25:5
+   |
+25 |     symbols,
+   |     ^^^^^^^
+26 |     text::{Line, Span, Text},
+   |                        ^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `crate::audit_pipeline::AuditReport`
+  --> crates/orchestrator/src/mitigation_engine.rs:12:5
+   |
+12 | use crate::audit_pipeline::AuditReport;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `EncodedConfirmedTransactionWithStatusMeta`
+ --> crates/orchestrator/src/chain_explorer.rs:4:33
+  |
+4 | use solana_transaction_status::{EncodedConfirmedTransactionWithStatusMeta, UiTransactionEncoding};
+  |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `MainnetGuardian`
+ --> crates/orchestrator/src/watcher.rs:2:31
+  |
+2 | use crate::mainnet_guardian::{MainnetGuardian, ThreatDetection};
+  |                               ^^^^^^^^^^^^^^^
+
+warning: unused import: `tokio::sync::mpsc`
+ --> crates/orchestrator/src/watcher.rs:3:5
+  |
+3 | use tokio::sync::mpsc;
+  |     ^^^^^^^^^^^^^^^^^
+
+warning: use of deprecated method `ratatui::Frame::<'_>::size`: use .area() as it's the more correct name
+   --> crates/orchestrator/src/dashboard.rs:465:18
+    |
+465 |     let size = f.size();
+    |                  ^^^^
+    |
+    = note: `#[warn(deprecated)]` on by default
+
+warning: use of deprecated method `ratatui::Frame::<'_>::size`: use .area() as it's the more correct name
+   --> crates/orchestrator/src/dashboard.rs:993:40
+    |
+993 |     let area = centered_rect(80, 80, f.size());
+    |                                        ^^^^
+
+warning: unused import: `Stylize`
+  --> crates/orchestrator/src/dashboard.rs:24:37
+   |
+24 |     style::{Color, Modifier, Style, Stylize},
+   |                                     ^^^^^^^
+
+warning: variable does not need to be mutable
+   --> crates/orchestrator/src/dashboard.rs:280:27
+    |
+280 | pub fn run_live_dashboard(mut state: DashboardState, rx: std::sync::mpsc::Receiver<ThreatDetection>) -> anyhow::Result<()> {
+    |                           ----^^^^^
+    |                           |
+    |                           help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `medium`
+   --> crates/orchestrator/src/dashboard.rs:506:26
+    |
+506 |     let (critical, high, medium, low) = state.severity_counts();
+    |                          ^^^^^^ help: if this is intentional, prefix it with an underscore: `_medium`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `low`
+   --> crates/orchestrator/src/dashboard.rs:506:34
+    |
+506 |     let (critical, high, medium, low) = state.severity_counts();
+    |                                  ^^^ help: if this is intentional, prefix it with an underscore: `_low`
+
+warning: unused variable: `target_accounts`
+  --> crates/orchestrator/src/mitigation_engine.rs:99:9
+   |
+99 |         target_accounts: &[String]
+   |         ^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_target_accounts`
+
+warning: field `threat_history` is never read
+  --> crates/orchestrator/src/mainnet_guardian.rs:27:5
+   |
+15 | pub struct MainnetGuardian {
+   |            --------------- field in this struct
+...
+27 |     threat_history: Vec<ThreatDetection>,
+   |     ^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `orchestrator` (lib) generated 13 warnings (run `cargo fix --lib -p orchestrator` to apply 6 suggestions)
+warning: unused variable: `findings`
+   --> crates/program-analyzer/tests/false_positives.rs:298:9
+    |
+298 |     let findings = analyze_code(secure_code);
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_findings`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `tracing::warn`
+ --> crates/orchestrator/src/main.rs:5:5
+  |
+5 | use tracing::warn;
+  |     ^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `orchestrator::markdown_engine::MarkdownEngine`
+ --> crates/orchestrator/src/main.rs:8:5
+  |
+8 | use orchestrator::markdown_engine::MarkdownEngine;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `i`
+   --> crates/orchestrator/src/main.rs:699:14
+    |
+699 |         for (i, dep_id) in f.aggregated_ids.iter().skip(1).take(2).enumerate() {
+    |              ^ help: if this is intentional, prefix it with an underscore: `_i`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `run_audit_mode` is never used
+   --> crates/orchestrator/src/main.rs:260:10
+    |
+260 | async fn run_audit_mode(cli: &Cli) -> anyhow::Result<()> {
+    |          ^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `run_test_mode` is never used
+   --> crates/orchestrator/src/main.rs:368:10
+    |
+368 | async fn run_test_mode(cli: &Cli) -> anyhow::Result<()> {
+    |          ^^^^^^^^^^^^^
+
+warning: function `print_final_summary` is never used
+   --> crates/orchestrator/src/main.rs:488:4
+    |
+488 | fn print_final_summary(reports: &[AuditReport]) {
+    |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function `post_test_results_to_forum` is never used
+   --> crates/orchestrator/src/main.rs:546:10
+    |
+546 | async fn post_test_results_to_forum(
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `program-analyzer` (test "false_positives") generated 1 warning
+warning: `orchestrator` (bin "solana-security-swarm" test) generated 7 warnings (run `cargo fix --bin "solana-security-swarm" --tests` to apply 2 suggestions)
+warning: unused variable: `sig`
+  --> crates/orchestrator/src/bin/tx_demo.rs:11:9
+   |
+11 |     let sig = "5h9J5v8B7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7vX7v"; // Invalid
+   |         ^^^ help: if this is intentional, prefix it with an underscore: `_sig`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `sig`
+  --> crates/orchestrator/src/bin/tx_demo.rs:13:9
+   |
+13 |     let sig = "3L9k7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7Z7"; // Still dummy
+   |         ^^^ help: if this is intentional, prefix it with an underscore: `_sig`
+
+warning: `orchestrator` (bin "solana-security-swarm") generated 7 warnings (7 duplicates)
+warning: `orchestrator` (bin "tx_demo" test) generated 2 warnings
+warning: `orchestrator` (bin "tx_demo") generated 2 warnings (2 duplicates)
+warning: `orchestrator` (lib test) generated 13 warnings (13 duplicates)
+warning: unused import: `Config`
+  --> crates/symbolic-engine/src/lib.rs:13:10
+   |
+13 | use z3::{Config, Context, Solver, SatResult};
+   |          ^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: fields `config` and `context` are never read
+ --> crates/symbolic-engine/src/solver.rs:4:5
+  |
+3 | pub struct SymbolicSolver<'ctx> {
+  |            -------------- fields in this struct
+4 |     config: z3::Config,
+  |     ^^^^^^
+5 |     context: &'ctx Context,
+  |     ^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: field `context` is never read
+ --> crates/symbolic-engine/src/constraint_builder.rs:5:5
+  |
+4 | pub struct ConstraintBuilder<'ctx> {
+  |            ----------------- field in this struct
+5 |     context: &'ctx Context,
+  |     ^^^^^^^
+
+warning: `symbolic-engine` (lib) generated 3 warnings (run `cargo fix --lib -p symbolic-engine` to apply 1 suggestion)
+warning: `symbolic-engine` (lib test) generated 3 warnings (3 duplicates)
+warning: unexpected `cfg` condition value: `custom-heap`
+  --> programs/vulnerable-token/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `anchor-debug`, `cpi`, `default`, `idl-build`, `no-entrypoint`, `no-idl`, and `no-log-ix-name`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_heap_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_heap_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: `#[warn(unexpected_cfgs)]` on by default
+   = note: this warning originates in the macro `$crate::custom_heap_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `solana`
+  --> programs/vulnerable-token/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `target_os` are: `aix`, `amdhsa`, `android`, `cuda`, `cygwin`, `dragonfly`, `emscripten`, `espidf`, `freebsd`, `fuchsia`, `haiku`, `hermit`, `horizon`, `hurd`, `illumos`, `ios`, `l4re`, `linux`, `lynxos178`, `macos`, `managarm`, `netbsd`, `none`, `nto`, `nuttx`, `openbsd`, `psp`, `psx`, `redox`, `rtems`, `solaris`, `solid_asp3`, `teeos`, `trusty`, and `tvos` and 11 more
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_heap_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_heap_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `$crate::custom_heap_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `custom-panic`
+  --> programs/vulnerable-token/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `anchor-debug`, `cpi`, `default`, `idl-build`, `no-entrypoint`, `no-idl`, and `no-log-ix-name`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_panic_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_panic_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `$crate::custom_panic_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `solana`
+  --> programs/vulnerable-token/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `target_os` are: `aix`, `amdhsa`, `android`, `cuda`, `cygwin`, `dragonfly`, `emscripten`, `espidf`, `freebsd`, `fuchsia`, `haiku`, `hermit`, `horizon`, `hurd`, `illumos`, `ios`, `l4re`, `linux`, `lynxos178`, `macos`, `managarm`, `netbsd`, `none`, `nto`, `nuttx`, `openbsd`, `psp`, `psx`, `redox`, `rtems`, `solaris`, `solid_asp3`, `teeos`, `trusty`, and `tvos` and 11 more
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_panic_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_panic_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `$crate::custom_panic_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `pyth-sdk`
+   --> programs/vulnerable-token/src/secure_oracle_mod.rs:221:11
+    |
+221 |     #[cfg(feature = "pyth-sdk")]
+    |           ^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `anchor-debug`, `cpi`, `default`, `idl-build`, `no-entrypoint`, `no-idl`, and `no-log-ix-name`
+    = help: consider adding `pyth-sdk` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `pyth-sdk`
+   --> programs/vulnerable-token/src/secure_oracle_mod.rs:241:15
+    |
+241 |     #[cfg(not(feature = "pyth-sdk"))]
+    |               ^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `anchor-debug`, `cpi`, `default`, `idl-build`, `no-entrypoint`, `no-idl`, and `no-log-ix-name`
+    = help: consider adding `pyth-sdk` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `switchboard`
+   --> programs/vulnerable-token/src/secure_oracle_mod.rs:269:11
+    |
+269 |     #[cfg(feature = "switchboard")]
+    |           ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `anchor-debug`, `cpi`, `default`, `idl-build`, `no-entrypoint`, `no-idl`, and `no-log-ix-name`
+    = help: consider adding `switchboard` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `switchboard`
+   --> programs/vulnerable-token/src/secure_oracle_mod.rs:294:15
+    |
+294 |     #[cfg(not(feature = "switchboard"))]
+    |               ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: expected values for `feature` are: `anchor-debug`, `cpi`, `default`, `idl-build`, `no-entrypoint`, `no-idl`, and `no-log-ix-name`
+    = help: consider adding `switchboard` as a feature in `Cargo.toml`
+    = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+
+warning: unexpected `cfg` condition value: `custom-heap`
+  --> programs/vulnerable-staking/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `anchor-debug`, `cpi`, `default`, `idl-build`, `no-entrypoint`, `no-idl`, and `no-log-ix-name`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_heap_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_heap_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: `#[warn(unexpected_cfgs)]` on by default
+   = note: this warning originates in the macro `$crate::custom_heap_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `solana`
+  --> programs/vulnerable-staking/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `target_os` are: `aix`, `amdhsa`, `android`, `cuda`, `cygwin`, `dragonfly`, `emscripten`, `espidf`, `freebsd`, `fuchsia`, `haiku`, `hermit`, `horizon`, `hurd`, `illumos`, `ios`, `l4re`, `linux`, `lynxos178`, `macos`, `managarm`, `netbsd`, `none`, `nto`, `nuttx`, `openbsd`, `psp`, `psx`, `redox`, `rtems`, `solaris`, `solid_asp3`, `teeos`, `trusty`, and `tvos` and 11 more
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_heap_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_heap_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `$crate::custom_heap_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `custom-panic`
+  --> programs/vulnerable-staking/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `anchor-debug`, `cpi`, `default`, `idl-build`, `no-entrypoint`, `no-idl`, and `no-log-ix-name`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_panic_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_panic_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `$crate::custom_panic_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `solana`
+  --> programs/vulnerable-staking/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `target_os` are: `aix`, `amdhsa`, `android`, `cuda`, `cygwin`, `dragonfly`, `emscripten`, `espidf`, `freebsd`, `fuchsia`, `haiku`, `hermit`, `horizon`, `hurd`, `illumos`, `ios`, `l4re`, `linux`, `lynxos178`, `macos`, `managarm`, `netbsd`, `none`, `nto`, `nuttx`, `openbsd`, `psp`, `psx`, `redox`, `rtems`, `solaris`, `solid_asp3`, `teeos`, `trusty`, and `tvos` and 11 more
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_panic_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_panic_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `$crate::custom_panic_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `custom-heap`
+  --> programs/security_shield/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `anchor-debug`, `cpi`, `default`, `idl-build`, `no-entrypoint`, `no-idl`, `no-log-ix-name`, `pyth-sdk`, and `switchboard`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_heap_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_heap_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: `#[warn(unexpected_cfgs)]` on by default
+   = note: this warning originates in the macro `$crate::custom_heap_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `solana`
+  --> programs/security_shield/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `target_os` are: `aix`, `amdhsa`, `android`, `cuda`, `cygwin`, `dragonfly`, `emscripten`, `espidf`, `freebsd`, `fuchsia`, `haiku`, `hermit`, `horizon`, `hurd`, `illumos`, `ios`, `l4re`, `linux`, `lynxos178`, `macos`, `managarm`, `netbsd`, `none`, `nto`, `nuttx`, `openbsd`, `psp`, `psx`, `redox`, `rtems`, `solaris`, `solid_asp3`, `teeos`, `trusty`, and `tvos` and 11 more
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_heap_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_heap_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `$crate::custom_heap_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `custom-panic`
+  --> programs/security_shield/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `anchor-debug`, `cpi`, `default`, `idl-build`, `no-entrypoint`, `no-idl`, `no-log-ix-name`, `pyth-sdk`, and `switchboard`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_panic_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_panic_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `$crate::custom_panic_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `solana`
+  --> programs/security_shield/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `target_os` are: `aix`, `amdhsa`, `android`, `cuda`, `cygwin`, `dragonfly`, `emscripten`, `espidf`, `freebsd`, `fuchsia`, `haiku`, `hermit`, `horizon`, `hurd`, `illumos`, `ios`, `l4re`, `linux`, `lynxos178`, `macos`, `managarm`, `netbsd`, `none`, `nto`, `nuttx`, `openbsd`, `psp`, `psx`, `redox`, `rtems`, `solaris`, `solid_asp3`, `teeos`, `trusty`, and `tvos` and 11 more
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_panic_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_panic_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `$crate::custom_panic_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `custom-heap`
+  --> programs/vulnerable-vault/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `anchor-debug`, `cpi`, `default`, `idl-build`, `no-entrypoint`, `no-idl`, and `no-log-ix-name`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_heap_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_heap_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: `#[warn(unexpected_cfgs)]` on by default
+   = note: this warning originates in the macro `$crate::custom_heap_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `solana`
+  --> programs/vulnerable-vault/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `target_os` are: `aix`, `amdhsa`, `android`, `cuda`, `cygwin`, `dragonfly`, `emscripten`, `espidf`, `freebsd`, `fuchsia`, `haiku`, `hermit`, `horizon`, `hurd`, `illumos`, `ios`, `l4re`, `linux`, `lynxos178`, `macos`, `managarm`, `netbsd`, `none`, `nto`, `nuttx`, `openbsd`, `psp`, `psx`, `redox`, `rtems`, `solaris`, `solid_asp3`, `teeos`, `trusty`, and `tvos` and 11 more
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_heap_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_heap_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `$crate::custom_heap_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `custom-panic`
+  --> programs/vulnerable-vault/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `feature` are: `anchor-debug`, `cpi`, `default`, `idl-build`, `no-entrypoint`, `no-idl`, and `no-log-ix-name`
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_panic_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_panic_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `$crate::custom_panic_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unexpected `cfg` condition value: `solana`
+  --> programs/vulnerable-vault/src/lib.rs:19:1
+   |
+19 | #[program]
+   | ^^^^^^^^^^
+   |
+   = note: expected values for `target_os` are: `aix`, `amdhsa`, `android`, `cuda`, `cygwin`, `dragonfly`, `emscripten`, `espidf`, `freebsd`, `fuchsia`, `haiku`, `hermit`, `horizon`, `hurd`, `illumos`, `ios`, `l4re`, `linux`, `lynxos178`, `macos`, `managarm`, `netbsd`, `none`, `nto`, `nuttx`, `openbsd`, `psp`, `psx`, `redox`, `rtems`, `solaris`, `solid_asp3`, `teeos`, `trusty`, and `tvos` and 11 more
+   = note: using a cfg inside a macro will use the cfgs from the destination crate and not the ones from the defining crate
+   = help: try referring to `$crate::custom_panic_default` crate for guidance on how handle this unexpected cfg
+   = help: the macro `$crate::custom_panic_default` may come from an old version of the `solana_program` crate, try updating your dependency with `cargo update -p solana_program`
+   = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   = note: this warning originates in the macro `$crate::custom_panic_default` which comes from the expansion of the attribute macro `program` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: `vulnerable-token` (lib test) generated 8 warnings
+warning: `vulnerable-staking` (lib test) generated 4 warnings
+warning: `vulnerable-token` (lib) generated 8 warnings (8 duplicates)
+warning: `security-shield` (lib) generated 4 warnings
+warning: `vulnerable-vault` (lib test) generated 4 warnings
+warning: `vulnerable-vault` (lib) generated 4 warnings (4 duplicates)
+warning: `vulnerable-staking` (lib) generated 4 warnings (4 duplicates)
+warning: `security-shield` (lib test) generated 4 warnings (4 duplicates)
+warning: `attack-simulator` (lib test) generated 1 warning (1 duplicate)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.35s
+warning: the following packages contain code that will be rejected by a future version of Rust: solana-client v1.18.26
+note: to see what the problems were, use the option `--future-incompat-report`, or run `cargo report future-incompatibilities --id 1`

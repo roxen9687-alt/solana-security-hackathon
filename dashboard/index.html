@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Security Swarm — Solana smart contract security audit platform.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>Security Swarm | Vulnerability Intelligence</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5 L90 25 V75 L50 95 L10 75 V25 Z' fill='none' stroke='%2314f195' stroke-width='8'/><path d='M35 50 L45 60 L65 40' fill='none' stroke='%2314f195' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-screen__content">
+      <div class="loading-screen__logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <path d="M12 8v4" />
+          <path d="M12 16h.01" />
+        </svg>
+      </div>
+      <div class="loading-screen__text">
+        <h2 class="loading-screen__title">Security Swarm</h2>
+        <p class="loading-screen__status">Initialising Analysis Engine...</p>
+      </div>
+      <div class="loading-screen__progress">
+        <div class="loading-screen__progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="app" class="app-shell" aria-hidden="true">
+
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar__header">
+        <div class="sidebar__logo">
+          <svg class="sidebar__logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <div class="sidebar__logo-text">
+            <span class="sidebar__logo-brand">Security Swarm</span>
+            <span class="sidebar__logo-tag">Vulnerability Intelligence</span>
+          </div>
+        </div>
+        <button id="sidebar-toggle" class="sidebar__toggle" aria-label="Toggle Navigation">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-group">
+          <span class="sidebar__nav-label">Main Matrix</span>
+          <ul class="sidebar__nav-list">
+            <li>
+              <a href="#overview" class="sidebar__nav-item is-active" data-page="overview">
+                <span class="sidebar__nav-icon" data-icon="overview"></span>
+                <span class="sidebar__nav-text">Insight Overview</span>
+              </a>
+            </li>
+            <li>
+              <a href="#programs" class="sidebar__nav-item" data-page="programs">
+                <span class="sidebar__nav-icon" data-icon="programs"></span>
+                <span class="sidebar__nav-text">Program Assets</span>
+              </a>
+            </li>
+            <li>
+              <a href="#findings" class="sidebar__nav-item" data-page="findings">
+                <span class="sidebar__nav-icon" data-icon="findings"></span>
+                <span class="sidebar__nav-text">Vulnerabilities</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar__nav-group">
+          <span class="sidebar__nav-label">Analytics</span>
+          <ul class="sidebar__nav-list">
+            <li>
+              <a href="#risk-matrix" class="sidebar__nav-item" data-page="risk-matrix">
+                <span class="sidebar__nav-icon" data-icon="risk-matrix"></span>
+                <span class="sidebar__nav-text">Risk Heatmap</span>
+              </a>
+            </li>
+            <li>
+              <a href="#taint-analysis" class="sidebar__nav-item" data-page="taint-analysis">
+                <span class="sidebar__nav-icon" data-icon="taint-analysis"></span>
+                <span class="sidebar__nav-text">Dataflow Taint</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar__footer">
+        <div class="sidebar__status">
+          <span class="sidebar__status-dot"></span>
+          <span class="sidebar__status-text">Network: Solana Mainnet</span>
+        </div>
+        <div class="sidebar__version">v1.2.4-stable</div>
+      </div>
+    </aside>
+
+    <main class="main-stage">
+
+      <header class="main-header">
+        <div class="main-header__left">
+          <div class="main-header__breadcrumb">
+            <span class="breadcrumb-root">Intelligence</span>
+            <span class="breadcrumb-separator">/</span>
+            <span id="page-title" class="breadcrumb-current">Overview</span>
+          </div>
+        </div>
+
+        <div class="main-header__right">
+          <div class="audit-status">
+            <span class="audit-status__label">Last Full Scan:</span>
+            <time id="audit-timestamp" class="audit-status__time">—</time>
+          </div>
+          <div class="header-actions">
+            <button class="header-btn" title="System Notifications">
+              <span class="header-btn__icon" data-icon="bell"></span>
+              <span id="notification-badge" class="header-btn__badge" hidden></span>
+            </button>
+            <div class="user-profile">
+              <div class="user-profile__avatar">
+                <span data-icon="account"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div id="content" class="page-container" role="region" aria-live="polite">
+        <!-- populated by app.js -->
+      </div>
+
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-stack"></div>
+
+  <div id="modal-overlay" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__backdrop" data-dismiss="modal"></div>
+    <div class="modal__container">
+      <header class="modal__header">
+        <h2 id="modal-title" class="modal__title">Finding Details</h2>
+        <button id="modal-close" class="modal__close" aria-label="Close modal">
+          <span data-icon="x"></span>
+        </button>
+      </header>
+      <div id="modal-body" class="modal__body">
+        <!-- populated by app.js -->
+      </div>
+      <footer id="modal-footer" class="modal__footer"></footer>
+    </div>
+  </div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>
